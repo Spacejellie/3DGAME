@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -36,15 +37,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Treasure")
+        if (collision.gameObject.tag == "treasure")
         {
             GameManager.Instance.Score++;
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "enemy")
         {
             GameManager.Instance.Score--;
+            Destroy(collision.gameObject);
             //Destroy(gameObject);
             //SceneManagement.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
