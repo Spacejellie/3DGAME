@@ -29,10 +29,12 @@ public class GameManager : MonoBehaviour
         set
         {
             score = value;
-            Debug.Log("Score Changed");
             if (score > HighScore)
             {
+                Debug.Log("new Highscore " + HighScore);
                 HighScore = score;
+                Debug.Log("new Highscore " + HighScore);
+                PlayerPrefs.SetInt(PREF_HIGH_SCORE, HighScore);
             }
         }
     }
@@ -42,17 +44,19 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            //highScore = PlayerPrefs.GetInt(PREF_HIGH_SCORE);
+            Debug.Log(PlayerPrefs.GetInt("example"));
+            highScore = PlayerPrefs.GetInt("example");
             return highScore;
         }
         set
         {
             highScore = value;
 
+            Debug.Log(Application.dataPath + DIR_DATA);
+
             Directory.CreateDirectory(Application.dataPath + DIR_DATA);
             File.WriteAllText(PATH_HIGH_SCORE, "" + HighScore);
-
-            //PlayerPrefs.SetInt(PREF_HIGH_SCORE, highScore);
+            PlayerPrefs.SetInt("example", HighScore);
         }
 
     }
@@ -92,6 +96,8 @@ public class GameManager : MonoBehaviour
         endTime -= Time.deltaTime; //subtrating delta time from time variable to count down time to 0
         if (endTime <= 0.0f)
         {
+            Debug.Log("End Game");
+            Debug.Log(HighScore);
             highScoreDisplay.enabled = true;
         }
     }

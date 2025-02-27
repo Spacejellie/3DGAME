@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - treasure
+  - apple
+  - gold
+  - enemy
   layers:
   - Default
   - TransparentFX
