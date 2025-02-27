@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "treasure")
+        if (collision.gameObject.tag == "apple")
         {
             GameManager.Instance.Score++;
             Destroy(collision.gameObject);

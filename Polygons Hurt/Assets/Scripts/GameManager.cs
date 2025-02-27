@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour
         set
         {
             score = value;
-            Debug.Log("Score Changed");
             if (score > HighScore)
             {
+                Debug.Log("new Highscore");
                 HighScore = score;
             }
         }
@@ -42,17 +42,18 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            //highScore = PlayerPrefs.GetInt(PREF_HIGH_SCORE);
+            highScore = PlayerPrefs.GetInt(PREF_HIGH_SCORE);
             return highScore;
         }
         set
         {
             highScore = value;
 
+            Debug.Log(Application.dataPath + DIR_DATA);
+
             Directory.CreateDirectory(Application.dataPath + DIR_DATA);
             File.WriteAllText(PATH_HIGH_SCORE, "" + HighScore);
-
-            //PlayerPrefs.SetInt(PREF_HIGH_SCORE, highScore);
+            PlayerPrefs.SetInt(PREF_HIGH_SCORE, HighScore);
         }
 
     }
