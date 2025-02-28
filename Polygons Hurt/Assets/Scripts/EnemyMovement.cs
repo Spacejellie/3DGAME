@@ -6,37 +6,30 @@ public class EnemyMovement : MonoBehaviour
 {
     public float speed = 0.2f;
     public GameObject enemy;
-    public float moveTime = 2.0f;
     public float resetTime = 2.0f;
-    public bool changeDir = false;
+    public float moveTime = 2.0f;
+    private float timer;
+    private bool movingRight = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = moveTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveTime -= Time.deltaTime;
-        if(moveTime >= 0)
+        timer -= Time.deltaTime;
+
+        if (timer > 0)
         {
-            enemy.transform.position += Vector3.right * speed;
+            transform.position += (movingRight ? Vector3.right : Vector3.left) * speed;
         }
-        if (moveTime <= 0 && changeDir == false)
+        else
         {
-            enemy.transform.position += Vector3.left * speed;
-        }
-        if(moveTime <= -resetTime)
-        {
-            moveTime = resetTime;
-            enemy.transform.position += Vector3.right * speed;
-            changeDir = true;
-        }
-        if (moveTime <= 0)
-        {
-            changeDir = false;
+            movingRight = !movingRight;
+            timer = moveTime;
         }
     }
 }
