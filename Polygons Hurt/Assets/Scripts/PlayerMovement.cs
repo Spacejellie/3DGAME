@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         {
             GameManager.Instance.Score--;
             Destroy(gameObject);
-            SceneManagement.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
