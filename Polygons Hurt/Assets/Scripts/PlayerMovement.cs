@@ -45,7 +45,9 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             GameManager.Instance.Score--;
-            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Finish")
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
