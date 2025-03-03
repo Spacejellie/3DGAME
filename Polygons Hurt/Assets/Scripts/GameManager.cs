@@ -92,7 +92,10 @@ public class GameManager : MonoBehaviour
         endTime -= Time.deltaTime; //subtrating delta time from time variable to count down time to 0
         if (endTime <= 0.0f)
         {
-            highScoreDisplay.enabled = true;
+            if (highScoreDisplay != null)
+            {
+                highScoreDisplay.enabled = true;
+            }
         }
     }
 }

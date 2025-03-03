@@ -5,8 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-   public void ChangeScene(string sceneName)
+    public string sceneName;
+
+    private void Start()
     {
-        SceneManager.LoadScene(sceneName);
+       
+    }
+
+    private void Update()
+    {
+       if (Input.GetKey(KeyCode.Space))
+        {
+            SceneManager.LoadScene(sceneName);
+        }  
     }
 }
