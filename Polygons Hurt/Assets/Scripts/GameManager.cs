@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highScoreDisplay;
     public TextMeshProUGUI scoreDisplay;
 
-    public float endTime = 15.0f;
+    public float endTime = 30f;
 
     const string DIR_DATA = "/Data/";
     const string FILE_HIGH_SCORE = "highScore.txt";
